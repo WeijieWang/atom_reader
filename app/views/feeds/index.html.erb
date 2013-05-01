@@ -1,1 +1,20 @@
-<h1>Hello, World!!!</h1>
+<h1>Atom Reader</h1>
+
+<div class = "row">
+	
+	<div class = "span4">
+		
+		<%= form_for Feed.new do |f| %>
+			<%= f.label :feed_url, "Subscription" %>
+			<%= f.text_field :feed_url %>
+			<%= f.submit "Create", class: "btn btn-primary" %>
+		<% end %>
+
+		<% for feed in @feeds %>
+		<%= link_to feed.title + " " + "#{feed.id}", "/feeds/show?q=#{feed.id}" %> <br />
+		<% end %>
+
+	</div>
+	
+	
+</div>
