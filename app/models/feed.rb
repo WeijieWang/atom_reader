@@ -1,7 +1,6 @@
 class Feed < ActiveRecord::Base
   attr_accessible :etag, :feed_url, :last_modified, :title, :url
   has_many :entries, :dependent => :destroy
-  
   def fetch_feed_data (feed)
     self.etag = feed.etag
     self.feed_url = feed.feed_url
@@ -12,7 +11,7 @@ class Feed < ActiveRecord::Base
 
   def first_update_entries (feed)
     feed.entries.each do |rawfeed|
-        self.create_entries rawfeed
+      self.create_entries rawfeed
     end
 
   end
@@ -26,16 +25,16 @@ class Feed < ActiveRecord::Base
     feed_to_update.entries = [last_entry]
 
     updated_feed = Feedzirra::Feed.update(feed_to_update)
-    
 
+    if updated_feed.updated?
       updated_feed.new_entries.each do |rawfeed|
         self.create_entries rawfeed
       end
+    end
 
   end
-  
 
-protected
+  protected
 
   def create_entries rawfeed
     self.entries.create(title: rawfeed.title, summary: rawfeed.summary,
