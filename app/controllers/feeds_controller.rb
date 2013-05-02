@@ -20,4 +20,14 @@ class FeedsController < ApplicationController
     redirect_to :back
   end
   
+  def show
+    id = params[:q]
+    feed = Feed.find_by_id(id)
+    feed.update_entries
+    
+    @entries = feed.entries
+    @feeds = Feed.all
+    render :index
+  end
+  
 end
