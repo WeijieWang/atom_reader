@@ -21,7 +21,7 @@
 		<div class = "entry">
 			<%= link_to entry.title, entry.url, :target => "_blank" %>
 			<br />
-			<%= entry.published %>  <br /><br />
+			<%= entry.created_at %>  <br /><br />
 			
 			<% if !entry.content.nil? %>
 			<%= entry.content.html_safe %>
