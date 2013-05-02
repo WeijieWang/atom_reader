@@ -22,7 +22,7 @@ class FeedsController < ApplicationController
   def show
     id = params[:q]
     feed = Feed.find_by_id(id)
-    feed.update_entries
+    #feed.update_entries
     @entries = feed.entries.order("created_at DESC").first(20)
     @feeds = Feed.all
     render :index

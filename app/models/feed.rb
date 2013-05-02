@@ -16,7 +16,14 @@ class Feed < ActiveRecord::Base
     end
 
   end
-
+  
+  def self.update_all_entries
+    Feed.all.each do |feed|
+      feed.update_entries
+    end
+    
+  end
+  
   def update_entries
     
     feed_to_update = Feedzirra::Parser::Atom.new
