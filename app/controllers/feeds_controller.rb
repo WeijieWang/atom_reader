@@ -2,6 +2,7 @@ class FeedsController < ApplicationController
   
   def index
     @feeds = Feed.all
+    @entries = Entry.order("published DESC").all
   end
   
   def create
@@ -13,8 +14,9 @@ class FeedsController < ApplicationController
     redirect_to :back and return if Feed.exists? feed_url: created_feed.feed_url
 
     @feed = Feed.new
-    @feed.fetch_feed_data created_feed
+    @feed.fetch_feed_data created_feed 
     @feed.save
+    @feed.first_update_entries created_feed
     redirect_to :back
   end
   

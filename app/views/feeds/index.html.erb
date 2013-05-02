@@ -16,5 +16,22 @@
 
 	</div>
 	
+	<div class = "span8">
+		<% for entry in @entries %>
+		<div class = "entry">
+			<%= link_to entry.title, entry.url, :target => "_blank" %>
+			<br />
+			
+			<% if !entry.content.nil? %>
+			<%= entry.content.html_safe %>
+			<% elsif !entry.summary.nil? %>
+			<%= entry.summary.html_safe %>
+			<% else %>
+			<% end %>
+			
+			<br />
+		</div>
+		<% end %>
+	
 	
 </div>
