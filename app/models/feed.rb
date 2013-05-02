@@ -41,7 +41,7 @@ class Feed < ActiveRecord::Base
 
   end
 
-  protected
+  #protected
 #categories: rawfeed.categories.to_s,
   def create_entries rawfeed
     self.entries.create(title: rawfeed.title, summary: rawfeed.summary,
