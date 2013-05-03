@@ -2,13 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.entry {
-  border: 1px solid grey;
-  margin: 20px;
-  padding: 10px;
-}
-
 #title {
   margin: 20px;
   color: #339966;
@@ -18,15 +11,17 @@
   vertical-align: top;
 }
 
+#feed-nav {
+  border: 0px;
+  font-weight: bold;
+  padding: 2px;
+}
+
 .sidebar-nav-fixed {
      position: fixed;
      width: 30%;
      background: white;
      border: 0px;
-     padding-right: 0px;
-     margin-right: 0px;
-     font-weight: bold;
-     
      a:hover {
       text-decoration: none; 
      }
@@ -44,3 +39,10 @@
         width: auto;
      }
  }
+ 
+
+.entry {
+  border: 1px solid grey;
+  margin: 20px;
+  padding: 10px;
+}

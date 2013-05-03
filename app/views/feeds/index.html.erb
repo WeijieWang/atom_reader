@@ -1,40 +1,11 @@
 <div class = "row-fluid">
 
 	<div class = "span4">
-		<div class = "well sidebar-nav sidebar-nav-fixed">
-
-			<h2><%= link_to "Atom Reader", :root, {id: "title"} %></h2>
-
-			<%= form_for Feed.new do |f| %>
-			<%= f.text_field :feed_url, :style => 'width: 52%'  %>
-			<%= f.submit "SUBSCRIBE", class: "btn btn-info", :id => "subscribe-button" %>
-			<% end %>
-
-			<% for feed in @feeds %>
-			<%= link_to feed.title + " " + "#{feed.id}", "/feeds/show?q=#{feed.id}" %>
-			<br />
-			<% end %>
-		</div>
+		<%= render "feed" %>
 	</div>
 
-	<div class = "span8", id = "right-column">
-		<% for entry in @entries %>
-		<div class = "entry">
-			<%= link_to entry.title, entry.url, :target => "_blank" %>
-			<br />
-			<%= entry.created_at %>
-			<br />
-			<br />
-
-			<% if !entry.content.nil? %>
-			<%= entry.content.html_safe %>
-			<% elsif !entry.summary.nil? %>
-			<%= entry.summary.html_safe %>
-			<% else %>
-			<% end %>
-
-			<br />
-		</div>
-		<% end %>
-
+	<div class = "span8">
+		<%= render "entry" %>
 	</div>
+
+</div>
