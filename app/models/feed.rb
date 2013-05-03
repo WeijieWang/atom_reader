@@ -6,8 +6,9 @@ class Feed < ActiveRecord::Base
     self.etag = feed.etag
     self.feed_url = feed.feed_url
     self.url = feed.url
-    self.last_modified = feed.last_modified
     self.title = feed.title
+    self.last_modified = feed.last_modified
+    return
   end
 
   def first_update_entries (feed)
