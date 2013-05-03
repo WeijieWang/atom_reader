@@ -1,13 +1,16 @@
-<h1>Atom Reader</h1>
 
-<div class = "row">
+
+<div class = "row-fluid">
 	
 	<div class = "span4">
+		
+		<h2><%= link_to "Atom Reader", :root, {id: "title"} %></h2>
+		
 		
 		<%= form_for Feed.new do |f| %>
 			<%= f.label :feed_url, "Subscription" %>
 			<%= f.text_field :feed_url %>
-			<%= f.submit "Create", class: "btn btn-primary" %>
+			<%= f.submit "Create", class: "btn btn-primary", :id => "create_button" %>
 		<% end %>
 
 		<% for feed in @feeds %>
