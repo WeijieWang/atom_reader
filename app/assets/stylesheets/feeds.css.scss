@@ -14,6 +14,33 @@
   color: #339966;
 }
 
-#create_button {
+#subscribe-button {
   vertical-align: top;
 }
+
+.sidebar-nav-fixed {
+     position: fixed;
+     width: 30%;
+     background: white;
+     border: 0px;
+     padding-right: 0px;
+     margin-right: 0px;
+     font-weight: bold;
+     
+     a:hover {
+      text-decoration: none; 
+     }
+ }
+
+ @media (max-width: 767px) {
+     .sidebar-nav-fixed {
+         width:auto;
+     }
+ }
+
+ @media (max-width: 979px) {
+     .sidebar-nav-fixed {
+         position:static;
+        width: auto;
+     }
+ }
