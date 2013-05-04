@@ -2,11 +2,17 @@
 
 html, body {
   overflow: hidden;
+  height: 100%;
 }
 
-.span4, .span8 {
-  overflow: auto;
-  height: 610px;
+.span4 {
+  overflow: scroll;
+  height: 100%;
+}
+
+.span8 {
+  overflow: scroll;
+  height: 100%;
 }
 
 
