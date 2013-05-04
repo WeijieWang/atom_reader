@@ -1,5 +1,4 @@
 class FeedsController < ApplicationController
-  
   def index
     @feeds = Feed.all
     @entries = Entry.order("created_at DESC").first(10)
@@ -10,7 +9,7 @@ class FeedsController < ApplicationController
     url = url.strip and url = url.gsub(/\A.*\/\//,"")
     created_feed = Feedzirra::Feed.fetch_and_parse(url)
 
-    redirect_to :back and return if Feed.exists? feed_url: created_feed.feed_url
+    redirect_to :back and return if !(created_feed.respond_to?(:feed_url)) or Feed.exists? feed_url: created_feed.feed_url
 
     @feed = Feed.new
     @feed.fetch_feed_data created_feed
@@ -26,10 +25,10 @@ class FeedsController < ApplicationController
     @feeds = Feed.all
     render :index
   end
-  
+
   def destroy
     feed = Feed.find_by_title(params[:feed][:title])
-    feed.destroy
+    feed.destroy unless feed.nil?
     redirect_to :back
   end
 
