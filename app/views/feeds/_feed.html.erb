@@ -7,6 +7,11 @@
 	<%= f.submit "SUBSCRIBE", class: "btn btn-info", :id => "subscribe-button" %>
 	<% end %>
 
+	<%= form_for Feed.new, :method => :delete do |f| %>
+	<%= f.text_field :title, :style => 'width: 52%'  %>
+	<%= f.submit "Delete", class: "btn btn-danger", :id => "subscribe-button" %>
+	<% end %>
+
 	<ul class="nav nav-tabs nav-stacked">
 		<% for feed in @feeds %>
 		<li>

@@ -26,5 +26,11 @@ class FeedsController < ApplicationController
     @feeds = Feed.all
     render :index
   end
+  
+  def destroy
+    feed = Feed.find_by_title(params[:feed][:title])
+    feed.destroy
+    redirect_to :back
+  end
 
 end
