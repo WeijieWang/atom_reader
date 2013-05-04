@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Atom Reader</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= favicon_link_tag 'favicon.ico' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	
-<div class = "container-fluid">
-<%= yield %>
-</div>
+	<head>
+		<title>Atom Reader</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= favicon_link_tag 'favicon.ico' %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
 
-</body>
+		<div class = "container-fluid">
+			<%= yield %>
+		</div>
+
+	</body>
 </html>

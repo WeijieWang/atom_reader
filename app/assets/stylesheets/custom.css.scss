@@ -1,5 +1,12 @@
 @import "bootstrap";
 
+html, body {
+  overflow: hidden;
+}
 
+.span4, .span8 {
+  overflow: auto;
+  height: 610px;
+}
 
 

@@ -15,16 +15,18 @@
   border: 0px;
   font-weight: bold;
   padding: 2px;
+  overflow: scroll;
 }
 
 .sidebar-nav-fixed {
      position: fixed;
      width: 30%;
-     background: white;
+     background-color: white;
      border: 0px;
      a:hover {
       text-decoration: none; 
      }
+
  }
 
  @media (max-width: 767px) {
@@ -35,7 +37,7 @@
 
  @media (max-width: 979px) {
      .sidebar-nav-fixed {
-         position:static;
+        position:static;
         width: auto;
      }
  }
