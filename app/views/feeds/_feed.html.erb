@@ -10,7 +10,7 @@
 	<ul class="nav nav-tabs nav-stacked">
 		<% for feed in @feeds %>
 		<li>
-			<%= link_to feed.title+" #{feed.id}", feed , id: "feed-nav" %>
+			<%= link_to feed.title, feed , id: "feed-nav" %>
 		</li>
 		<% end %>
 	</ul>
