@@ -1,3 +1,17 @@
 @import "bootstrap";
 
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
+.span8 {
+  overflow: auto;
+  height: 500px;
+}
+
+.span4 {
+  overflow: auto;
+  height: 100px;
+}
 

@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
+.span8, .span4 {
+  overflow: auto;
+}
+
 #title {
   margin: 20px;
   color: #339966;
@@ -15,28 +24,24 @@
   border: 0px;
   font-weight: bold;
   padding: 2px;
-  overflow: scroll;
 }
 
-.sidebar-nav-fixed {
-     position: fixed;
-     width: 30%;
+.sidebar-nav {
      background-color: white;
      border: 0px;
      a:hover {
       text-decoration: none; 
      }
-
  }
 
  @media (max-width: 767px) {
-     .sidebar-nav-fixed {
+     .sidebar-nav {
          width:auto;
      }
  }
 
  @media (max-width: 979px) {
-     .sidebar-nav-fixed {
+     .sidebar-nav {
         position:static;
         width: auto;
      }
