@@ -29,7 +29,7 @@ class FeedsController < ApplicationController
   def destroy
     feed = Feed.find_by_title(params[:feed][:title])
     feed.destroy unless feed.nil?
-    redirect_to :back
+    redirect_to :root
   end
 
 end
