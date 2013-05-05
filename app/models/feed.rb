@@ -38,7 +38,6 @@ class Feed < ActiveRecord::Base
     updated_feed = Feedzirra::Feed.update(feed_to_update)
     return if updated_feed.nil?
 
-    # if updated_feed.updated?
     if updated_feed.updated?
       self.update_attributes(etag: updated_feed.etag, last_modified: updated_feed.last_modified)
     end
@@ -48,11 +47,16 @@ class Feed < ActiveRecord::Base
     end
 
   end
+  
+  def self.clear_entries
+    Entry.where("create_at < ?", 2.days.ago).delete_all
+    Entry.each {|e| e.first_update_entries if e.entries.count == 0 }
+  end
 
-  #protected
+  protected
 #categories: rawfeed.categories.to_s,
   def create_entries rawfeed
-    self.entries.create(title: rawfeed.title, summary: rawfeed.summary,
+    self.entries.create(title: rawfeed.title[0..254], summary: rawfeed.summary,
     author: rawfeed.author,
     content: rawfeed.content, published: rawfeed.published, url: rawfeed.url,
     guid: rawfeed.id)

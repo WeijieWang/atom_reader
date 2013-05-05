@@ -2,7 +2,8 @@
 <div class = "entry">
 	<%= link_to entry.title, entry.url, :target => "_blank", :class => "entry-title" %>
 	<br />
-	<%= "by #{entry.author}  " + entry.created_at.localtime.to_s[0..15] %>
+	<%= "by #{entry.author}   "%>
+	<em><%= entry.created_at.strftime('at %I:%M %p %b %d, %Y ') %></em>
 	<br />
 	<br />
 
