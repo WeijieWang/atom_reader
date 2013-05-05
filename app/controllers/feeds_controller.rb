@@ -22,8 +22,10 @@ class FeedsController < ApplicationController
     feed = Feed.find_by_id(params[:id])
     #feed.update_entries
     @entries = feed.entries.order("created_at DESC").first(20)
-    @feeds = Feed.all
-    render :index
+    respond_to do |format|
+      format.html {render :index }
+      format.js {render :index}
+    end
   end
 
   def destroy
