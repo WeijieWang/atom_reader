@@ -2,14 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html, body {
-  overflow: hidden;
-  height: 100%;
-}
-
-.span8, .span4 {
-  overflow: auto;
-}
 
 #title {
   margin: 20px;
@@ -49,7 +41,21 @@ html, body {
  
 
 .entry {
-  border: 1px solid grey;
-  margin: 20px;
+  border: 1px solid #A34719;
+  margin: 20px 20px 0 20px;
   padding: 10px;
+}
+
+.entry-title {
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.entry-footer {
+  background-color: #FFFFF5;
+  border: 1px solid #A34719;
+  border-top-width: 0px;
+  padding: 5px;
+  margin: 0 20px 20px 20px;
 }
