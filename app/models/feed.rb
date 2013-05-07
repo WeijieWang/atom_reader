@@ -49,7 +49,7 @@ class Feed < ActiveRecord::Base
   end
   
   def self.clear_entries
-    Entry.where("created_at < ?", Time.now).each {|entry| entry.destroy}
+    Entry.where("created_at < ?", Time.now).delete_all
     #Feed.all.each {|e| e.first_update_entries if e.entries.count == 0 }
   end
 

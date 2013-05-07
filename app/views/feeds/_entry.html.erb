@@ -2,8 +2,7 @@
 <div class = "entry">
 	<%= link_to entry.title, entry.url, :target => "_blank", :class => "entry-title" %>
 	<br />
-	<%= "by #{entry.author}   "%>
-	<em><%= entry.created_at.strftime('at %I:%M %p %b %d, %Y ') %></em>
+	<em><%= author_and_date entry %></em>
 	<br />
 	<br />
 
@@ -15,8 +14,8 @@
 	<% end %>
 </div>
 
-<div class = "entry-footer">
-	<%= "THE LAST LINE IS RESERVED" %>
+<div class = "entry-footer" >
+	<sapn id="share-button"><%= social_share_button_tag(entry.title) %></sapn>
 </div>
 
 <% end %>
