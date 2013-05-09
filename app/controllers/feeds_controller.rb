@@ -26,6 +26,10 @@ class FeedsController < ApplicationController
     @entries = feed.entries.paginate(:page => params[:page]).order("created_at DESC")
     render :index
   end
+  
+  def next_entry
+    
+  end
 
   def destroy
     feed = Feed.find_by_title(params[:feed][:title])

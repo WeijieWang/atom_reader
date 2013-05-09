@@ -14,11 +14,11 @@
 //= require jquery_ujs
 //= require_tree .
 
-
 $(document).ready(function() {
-	
-	windowHeight = $(window).height();
-	$('.span4').height(windowHeight);
-	$('.span8').height(windowHeight);
+
+	var windowHeight = $(window).height();
+	$('#left-part').height(windowHeight);
+	$('#right-part').height(windowHeight);
 
 });
+

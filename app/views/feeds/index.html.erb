@@ -1,10 +1,20 @@
 <div class = "row-fluid">
+	<div class = "span4"></div>
 
-	<div class = "span4">
+	<div class = "span8">
+		<div class = "navbar-fixed">
+			<%= render "control" %>
+		</div>
+	</div>
+</div>
+
+<div class = "row-fluid">
+
+	<div class = "span4", id = "left-part">
 		<%= render "feed" %>
 	</div>
 
-	<div class = "span8">
+	<div class = "span8", id = "right-part">
 		<div id = "feed-entry">
 			<%= render "entry" %>
 		</div>
