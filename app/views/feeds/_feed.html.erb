@@ -1,7 +1,5 @@
 <div class = "well sidebar-nav">
 
-	<h2><%= link_to "Wanzi Reader", :root, {id: "title"} %></h2>
-
 	<%= form_for Feed.new do |f| %>
 	<%= f.text_field :feed_url, :style => 'width: 52%'  %>
 	<%= f.submit "SUBSCRIBE", class: "btn btn-info", :id => "subscribe-button" %>

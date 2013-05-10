@@ -16,7 +16,7 @@
 
 $(document).ready(function() {
 
-	var windowHeight = $(window).height();
+	var windowHeight = $(window).height() - 50 ;
 	$('#left-part').height(windowHeight);
 	$('#right-part').height(windowHeight);
 
