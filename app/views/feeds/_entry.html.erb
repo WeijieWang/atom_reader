@@ -1,24 +1,27 @@
 <% for entry in @entries %>
-<div class = "entry">
+<div class = "wrapped-entry">
+	<div class = "entry">
+		<%= link_to entry.title, entry.url, :target => "_blank", :class => "entry-title" %>
 
-	<%= link_to entry.title, entry.url, :target => "_blank", :class => "entry-title" %>
-	<br />
-	<em><%= author_and_date entry %></em>
-	<br />
-	<br />
+		<br />
+		<em><%= author_and_date entry %></em>
+		<br />
+		<br />
 
-	<% if !entry.content.nil? %>
-	<%= entry.content.html_safe %>
-	<% elsif !entry.summary.nil? %>
-	<%= entry.summary.html_safe %>
-	<% else %>
-	<% end %>
-</div>
+		<% if !entry.content.nil? %>
+		<%= entry.content.html_safe %>
+		<% elsif !entry.summary.nil? %>
+		<%= entry.summary.html_safe %>
+		<% else %>
+		<% end %>
+	</div>
 
-<div class = "entry-footer" >
-	<sapn id="share-button">
-		<%= social_share_button_tag(entry.title) %>
-	</sapn>
+	<div class = "entry-footer" >
+		<sapn id="share-button">
+			<%= social_share_button_tag(entry.title) %>
+		</sapn>
+	</div>
+
 </div>
 
 <% end %>
