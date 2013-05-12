@@ -1,8 +1,7 @@
 class FeedsController < ApplicationController
-  
   def index
     @feeds = Feed.all
-    @entries = Entry.paginate(:page => params[:page], :per_page => 7).order("published DESC")
+    @entries = Entry.order("published DESC").paginate(:page => params[:page], :per_page => 7)
   end
 
   def create
@@ -32,5 +31,4 @@ class FeedsController < ApplicationController
     feed.destroy unless feed.nil?
     redirect_to :root
   end
-
 end
