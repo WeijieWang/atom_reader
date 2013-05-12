@@ -3,7 +3,15 @@ var pageRefresh = function() {
 };
 
 var previousEntry = function() {
-	alert($('#right-part').scrollTop());
+	var entry = $('.wrapped-entry').first(), margin = 20, 
+	distance = 0, d = entry.offset().top;
+	while (!((d <= 80) && (d > -(entry.height() - 80)))) {
+		distance += entry.height() + margin;
+		entry = entry.next();
+		d = entry.offset().top;
+	}
+	distance = distance - (entry.prev().height() + margin);
+	$('#right-part').scrollTop(distance);
 };
 
 var nextEntry = function() {

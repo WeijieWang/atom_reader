@@ -1,10 +1,9 @@
 module FeedsHelper
   def author_and_date entry
-
     if entry.published.nil?
-      date = entry.created_at.strftime('at %I:%M %p %b %d, %Y ')
+      date = entry.created_at.localtime.strftime('at %I:%M %p %b %d, %Y ')
     else
-      date = entry.published.strftime('at %I:%M %p %b %d, %Y ')
+      date = entry.published.localtime.strftime('at %I:%M %p %b %d, %Y ')
     end
 
     if entry.author.nil?
