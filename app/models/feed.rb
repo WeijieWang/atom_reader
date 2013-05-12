@@ -17,16 +17,17 @@ class Feed < ActiveRecord::Base
     end
 
   end
-  
+
   def self.update_all_entries
     Feed.all.each do |feed|
       feed.update_entries
     end
-    
+
   end
-  
+
   def update_entries
     
+=begin
     feed_to_update = Feedzirra::Parser::Atom.new
     feed_to_update.feed_url = self.feed_url
     feed_to_update.etag = self.etag
@@ -41,20 +42,29 @@ class Feed < ActiveRecord::Base
     if updated_feed.updated?
       self.update_attributes(etag: updated_feed.etag, last_modified: updated_feed.last_modified)
     end
-    
+
     updated_feed.new_entries.each do |rawfeed|
-        self.create_entries rawfeed
+      self.create_entries rawfeed
     end
+=end
+
+    feed = Feedzirra::Feed.fetch_and_parse(self.feed_url)
+    self.update_attributes(etag: feed.etag, last_modified: feed.last_modified)
+    feed.entries.each do |rawfeed|
+      self.create_entries rawfeed unless self.entries.exists? :guid => rawfeed.id
+    end
+    
 
   end
-  
+
   def self.clear_entries
     Entry.where("created_at < ?", Time.now).delete_all
-    #Feed.all.each {|e| e.first_update_entries if e.entries.count == 0 }
+  #Feed.all.each {|e| e.first_update_entries if e.entries.count == 0 }
   end
 
   protected
-#categories: rawfeed.categories.to_s,
+
+  #categories: rawfeed.categories.to_s,
   def create_entries rawfeed
     self.entries.create(title: rawfeed.title[0..254], summary: rawfeed.summary,
     author: rawfeed.author,
