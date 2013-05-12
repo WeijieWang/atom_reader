@@ -1,7 +1,7 @@
 class FeedsController < ApplicationController
   def index
     @feeds = Feed.all
-    @entries = Entry.paginate(:page => params[:page], :per_page => 7).order("published DESC, created_at DESC")
+    @entries = Entry.paginate(:page => params[:page], :per_page => 7).order("published DESC")
   end
 
   def create
@@ -22,7 +22,11 @@ class FeedsController < ApplicationController
     feed = Feed.find_by_id(params[:id])
     @feeds = Feed.all
     #feed.update_entries
-    @entries = feed.entries.paginate(:page => params[:page], :per_page => 7).order("published DESC,created_at DESC")
+    if feed.entries.first.published.nil?
+       @entries = feed.entries.paginate(:page => params[:page], :per_page => 7).order("created_at DESC")
+     else
+       @@entries = feed.entries.paginate(:page => params[:page], :per_page => 7).order("published DESC")
+    end
     render :index
   end
 
