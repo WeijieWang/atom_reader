@@ -25,7 +25,7 @@ class FeedsController < ApplicationController
     if feed.entries.first.published.nil?
        @entries = feed.entries.paginate(:page => params[:page], :per_page => 7).order("created_at DESC")
      else
-       @@entries = feed.entries.paginate(:page => params[:page], :per_page => 7).order("published DESC")
+       @entries = feed.entries.paginate(:page => params[:page], :per_page => 7).order("published DESC")
     end
     render :index
   end
