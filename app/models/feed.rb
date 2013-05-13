@@ -1,4 +1,5 @@
 class Feed < ActiveRecord::Base
+  
   attr_accessible :etag, :feed_url, :last_modified, :title, :url
   has_many :entries, :dependent => :destroy
   
@@ -26,34 +27,31 @@ class Feed < ActiveRecord::Base
   end
 
   def update_entries
-    
 =begin
-    feed_to_update = Feedzirra::Parser::Atom.new
-    feed_to_update.feed_url = self.feed_url
-    feed_to_update.etag = self.etag
-    feed_to_update.last_modified = self.last_modified
-    last_entry = Feedzirra::Parser::AtomEntry.new
-    last_entry.url = self.entries.order("published DESC").first.url
-    feed_to_update.entries = [last_entry]
+feed_to_update = Feedzirra::Parser::Atom.new
+feed_to_update.feed_url = self.feed_url
+feed_to_update.etag = self.etag
+feed_to_update.last_modified = self.last_modified
+last_entry = Feedzirra::Parser::AtomEntry.new
+last_entry.url = self.entries.order("published DESC").first.url
+feed_to_update.entries = [last_entry]
 
-    updated_feed = Feedzirra::Feed.update(feed_to_update)
-    return if updated_feed.nil?
+updated_feed = Feedzirra::Feed.update(feed_to_update)
+return if updated_feed.nil?
 
-    if updated_feed.updated?
-      self.update_attributes(etag: updated_feed.etag, last_modified: updated_feed.last_modified)
-    end
+if updated_feed.updated?
+self.update_attributes(etag: updated_feed.etag, last_modified: updated_feed.last_modified)
+end
 
-    updated_feed.new_entries.each do |rawfeed|
-      self.create_entries rawfeed
-    end
+updated_feed.new_entries.each do |rawfeed|
+self.create_entries rawfeed
+end
 =end
-
     feed = Feedzirra::Feed.fetch_and_parse(self.feed_url)
     self.update_attributes(etag: feed.etag, last_modified: feed.last_modified)
     feed.entries.each do |rawfeed|
       self.create_entries rawfeed unless self.entries.exists? :guid => rawfeed.id
     end
-    
 
   end
 
@@ -67,9 +65,8 @@ class Feed < ActiveRecord::Base
   #categories: rawfeed.categories.to_s,
   def create_entries rawfeed
     self.entries.create(title: rawfeed.title[0..254], summary: rawfeed.summary,
-    author: rawfeed.author,
-    content: rawfeed.content, published: rawfeed.published, url: rawfeed.url,
-    guid: rawfeed.id)
+    author: rawfeed.author, content: rawfeed.content, published: rawfeed.published, 
+    url: rawfeed.url, guid: rawfeed.id)
   end
 
 end
